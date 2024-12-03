@@ -20,7 +20,7 @@ frame-support.workspace = true
 frame-system.workspace = true
 pallet-balances.workspace = true
 sp-runtime = { version = "12.0.0", default-features = true }
-schnorrkel = { version = "0.11.4", workspace = true } # Mantida versão 0.11.4
+schnorrkel = { version = "0.11.4", workspace = true }
 
 [dev-dependencies]
 sp-core = { default-features = true, workspace = true }
