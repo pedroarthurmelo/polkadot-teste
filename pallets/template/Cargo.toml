@@ -50,3 +50,5 @@ try-runtime = [
 	"frame-support/try-runtime",
 	"frame-system/try-runtime",
 ]
+[patch.crates-io]
+schnorrkel = { version = "0.11.4" }
