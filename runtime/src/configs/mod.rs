@@ -159,6 +159,12 @@ impl pallet_sudo::Config for Runtime {
 impl pallet_template::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
 	type WeightInfo = pallet_template::weights::SubstrateWeight<Runtime>;
+	
+	#[doc = " Define o tipo de saldo nativo usado para transações de Kitties."]
+	type NativeBalance;
+	
+	#[doc = " Define o limite máximo de Kitties que um usuário pode possuir."]
+	type MaxKittiesOwned;
 }
 
 impl pallet_kitties::Config for Runtime {
