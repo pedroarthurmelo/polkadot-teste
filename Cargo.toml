@@ -43,7 +43,7 @@ sp-block-builder = { version = "34.0.0", default-features = false }
 sp-blockchain = { version = "37.0.1", default-features = false }
 sp-consensus-aura = { version = "0.40.0", default-features = false }
 sp-consensus-grandpa = { version = "21.0.0", default-features = false }
-sp-core = { version = "34.0.0", default-features = false }
+sp-core = "*"
 sp-inherents = { version = "34.0.0", default-features = false }
 sp-io = { version = "38.0.0", default-features = false }
 sp-keyring = { version = "39.0.0", default-features = false }
