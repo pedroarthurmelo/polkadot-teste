@@ -30,7 +30,7 @@ sp-api.workspace = true
 sp-block-builder.workspace = true
 sp-consensus-aura = { features = ["serde"], workspace = true }
 sp-consensus-grandpa = { features = ["serde"], workspace = true }
-sp-core = "*"  //This line is potentially problematic - see below
+sp-core = "*"  
 sp-inherents.workspace = true
 sp-offchain.workspace = true
 sp-runtime = { features = ["serde"], workspace = true }
@@ -44,7 +44,7 @@ pallet-transaction-payment-rpc-runtime-api.workspace = true
 frame-benchmarking = { optional = true, workspace = true }
 frame-system-benchmarking = { optional = true, workspace = true }
 pallet-template.workspace = true
-schnorrkel.workspace = true  // Only one schnorrkel dependency
+schnorrkel.workspace = true  
 
 
 [build-dependencies]
