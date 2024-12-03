@@ -23,7 +23,6 @@ frame-benchmarking = { optional = true, version = "4.0.0" }
 
 
 # Dependências para serialização e codificação
-codec = { features = ["derive"], version = "2.0.0" }
 scale-info = { features = ["derive"], version = "0.8.0" }
 
 # Dependência opcional de benchmarking
