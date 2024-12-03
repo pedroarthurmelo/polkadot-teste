@@ -1,17 +1,17 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
-/// Importação do módulo `impls` (caso seja usado para extensões ou lógica adicional).
-mod impls;
+#[cfg(feature = "runtime-benchmarks")]
+mod benchmarking;
 
-/// Importações necessárias do framework Substrate.
-use frame_support::{
-    pallet_prelude::*,
-    traits::tokens::Preservation,
-    BoundedVec,
-};
+#[cfg(test)]
+mod mock;
+
+mod weights;
+pub use weights::*;
+
+use frame_support::pallet_prelude::*;
 use frame_system::pallet_prelude::*;
-use sp_runtime::traits::{CheckedAdd, AtLeast32BitUnsigned, BlakeTwo256};
-pub use pallet;
+pub use pallet::*;
 
 #[frame_support::pallet]
 pub mod pallet {
@@ -63,7 +63,7 @@ pub mod pallet {
     /// Mapeia cada conta para a lista de Kitties que possui.
     #[pallet::storage]
     #[pallet::getter(fn kitties_owned)]
-    pub(super) type KittiesOwned<T: Config> = StorageMap
+    pub(super) type KittiesOwned<T: Config> = StorageMap<
         _,
         Blake2_128Concat,
         T::AccountId,
@@ -158,7 +158,7 @@ pub mod pallet {
             kitty_id: [u8; 32],
         ) -> DispatchResult {
             let who = ensure_signed(origin)?;
-            Self::do_transfer(who, to, kitty_id)?;
+            // Implemente a lógica de transferência
             Ok(())
         }
 
@@ -171,7 +171,7 @@ pub mod pallet {
             new_price: Option<BalanceOf<T>>,
         ) -> DispatchResult {
             let who = ensure_signed(origin)?;
-            Self::do_set_price(who, kitty_id, new_price)?;
+            // Implemente a lógica de definição de preço
             Ok(())
         }
 
@@ -184,7 +184,7 @@ pub mod pallet {
             max_price: BalanceOf<T>,
         ) -> DispatchResult {
             let who = ensure_signed(origin)?;
-            Self::do_buy_kitty(who, kitty_id, max_price)?;
+            // Implemente a lógica de compra
             Ok(())
         }
     }
