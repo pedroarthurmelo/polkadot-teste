@@ -21,13 +21,6 @@ sp-std = { version = "4.0.0", default-features = false }
 # Dependências para benchmarking
 frame-benchmarking = { optional = true, version = "4.0.0" }
 
-
-# Dependências para serialização e codificação
-scale-info = { features = ["derive"], version = "0.8.0" }
-
-# Dependência opcional de benchmarking
-frame-benchmarking = { optional = true, version = "4.0.0" }
-
 [dev-dependencies]
 # Dependências de desenvolvimento
 sp-core = { default-features = true, version = "4.0.0" }
