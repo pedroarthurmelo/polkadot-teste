@@ -11,7 +11,8 @@ pub use weights::*;
 
 use frame_support::pallet_prelude::*;
 use frame_system::pallet_prelude::*;
-pub use pallet::*;
+use sp_runtime::traits::Zero;
+
 
 #[frame_support::pallet]
 pub mod pallet {
@@ -19,8 +20,6 @@ pub mod pallet {
 
     /// Estrutura principal do pallet.
     #[pallet::pallet]
-    #[pallet::generate_store(pub(super) trait Store)]
-    #[pallet::without_storage_info]
     pub struct Pallet<T>(_);
 
     /// Configuração do pallet, definindo os tipos necessários.
@@ -30,7 +29,7 @@ pub mod pallet {
         type RuntimeEvent: From<Event<Self>> + IsType<<Self as frame_system::Config>::RuntimeEvent>;
 
         /// Define o tipo de saldo nativo usado para transações de Kitties.
-        type NativeBalance: Inspect<Self::AccountId> + Mutate<Self::AccountId>;
+        type NativeBalance: Member + Parameter + AtLeast32BitUnsigned + Default + Copy + MaybeSerializeDeserialize;
 
         /// Define o limite máximo de Kitties que um usuário pode possuir.
         #[pallet::constant]
@@ -38,11 +37,10 @@ pub mod pallet {
     }
 
     /// Define o tipo de saldo usado para preços de Kitties.
-    pub type BalanceOf<T> =
-        <<T as Config>::NativeBalance as Inspect<<T as frame_system::Config>::AccountId>>::Balance;
+    pub type BalanceOf<T> = <T as Config>::NativeBalance;
 
     /// Estrutura representando um Kitty no armazenamento.
-    #[derive(Encode, Decode, TypeInfo, MaxEncodedLen)]
+    #[derive(Encode, Decode, Clone, PartialEq, Eq, TypeInfo, MaxEncodedLen)]
     #[scale_info(skip_type_params(T))]
     pub struct Kitty<T: Config> {
         pub dna: [u8; 32],
@@ -158,7 +156,7 @@ pub mod pallet {
             kitty_id: [u8; 32],
         ) -> DispatchResult {
             let who = ensure_signed(origin)?;
-            // Implemente a lógica de transferência
+            // Implement transfer logic here
             Ok(())
         }
 
@@ -171,7 +169,7 @@ pub mod pallet {
             new_price: Option<BalanceOf<T>>,
         ) -> DispatchResult {
             let who = ensure_signed(origin)?;
-            // Implemente a lógica de definição de preço
+            // Implement set_price logic here
             Ok(())
         }
 
@@ -184,7 +182,7 @@ pub mod pallet {
             max_price: BalanceOf<T>,
         ) -> DispatchResult {
             let who = ensure_signed(origin)?;
-            // Implemente a lógica de compra
+            // Implement buy_kitty logic here
             Ok(())
         }
     }
