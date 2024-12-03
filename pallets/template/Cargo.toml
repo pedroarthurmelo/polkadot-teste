@@ -24,7 +24,7 @@ schnorrkel = "0.11.4"
 frame-benchmarking = { optional = true, version = "4.0.0" }
 
 [dev-dependencies]
-sp-core = { default-features = true, workspace = true }
+sp-core = { version = "34.0.0", default-features = false }
 sp-io = { default-features = true, workspace = true }
 sp-runtime = { default-features = true, workspace = true }
 
