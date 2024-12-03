@@ -1,8 +1,9 @@
 use super::*;
-use frame::prelude::*;
-use frame::primitives::BlakeTwo256;
-use frame::traits::tokens::Preservation;
-use frame::traits::Hash;
+use frame_support::{
+    pallet_prelude::*,
+    traits::tokens::Preservation,
+};
+use sp_runtime::traits::BlakeTwo256;
 
 impl<T: Config> Pallet<T> {
     /// Gera um DNA único para o Kitty usando uma combinação de dados exclusivos.
